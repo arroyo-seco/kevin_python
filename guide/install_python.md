@@ -17,4 +17,4 @@ https://docs.python.org/2/library/index.html
 
 Questions
 ---------
-Ask any questions here: http://www.stackoverflow.com
+Answers: http://www.stackoverflow.com

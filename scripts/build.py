@@ -2,6 +2,7 @@ from os import listdir
 from os.path import isfile, join
 import shutil
 import os
+import subprocess
 
 def validate_path_exists(path):
 	assert os.path.exists(path), 'Path %s does not exist' % path
@@ -22,8 +23,8 @@ def get_abs_path_for_file(relative_path, filename):
 	return os.path.abspath(join(relative_path, filename))
 
 def grip(markdown_file_path, html_file_path):
-	command = 'grip --gfm --wide --export %s %s' % (markdown_file_path, html_file_path)
-	os.system(command)
+	exit_code = subprocess.call(['grip', '--gfm', '--wide', '--export', markdown_file_path, html_file_path])
+	assert 0 == exit_code
 
 def grip_file(f, markdown_path, dist_path):
 	markdown_file_path = get_abs_path_for_file(markdown_path, f)
