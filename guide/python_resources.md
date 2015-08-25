@@ -1,5 +1,5 @@
-Installing and running Python
-=============================
+Python Resources
+================
 
 Python should already be installed and be somewhere on your shell path on your mac. Check the version by running `python --version`. It should be version 2.7.x. If it's less than that, you can upgrade python through processes documented on the internet.
 
