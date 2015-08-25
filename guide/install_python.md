@@ -10,3 +10,11 @@ Running the command `python` with no arguments opens the python interactive shel
 Running Python files
 --------------------
 To write a program inside a file, simply create a file with the extension '.py'. These files can be run with the `python` command like so: `python test_file.py`
+
+Library Reference
+-----------------
+https://docs.python.org/2/library/index.html
+
+Questions
+---------
+Ask any questions here: http://www.stackoverflow.com
