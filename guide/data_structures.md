@@ -219,6 +219,6 @@ For this reason, in statically typed languages it's unusual to see an index look
 
 Links
 -----
-* Next: *[Functions](functions.md)*
-* Previous: *[Control Flow](control_flow.md)*
+* Next: [Functions](functions.md)
+* Previous: [Control Flow](control_flow.md)
 * [README](README.md)

@@ -104,6 +104,6 @@ result = process_two_arguments(lambda x, y: x * y, 5, 2)
 
 Links
 -----
-* Next: *[Functions on Data Structures](functions_on_data_structures.md)*
-* Previous: *[Data Structures](data_structures.md)*
+* Next: [Functions on Data Structures](functions_on_data_structures.md)
+* Previous: [Data Structures](data_structures.md)
 * [README](README.md)

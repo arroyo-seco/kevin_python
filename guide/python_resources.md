@@ -21,5 +21,5 @@ Answers: http://www.stackoverflow.com
 
 Links
 -----
-* Next: *[Values, Functions, and Identity](values_functions_identity.md)*
+* Next: [Values, Functions, and Identity](values_functions_identity.md)
 * [README](README.html)
