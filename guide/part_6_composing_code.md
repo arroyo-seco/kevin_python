@@ -9,37 +9,37 @@ The complexity of programs increases as the number of variables increase. One wa
 ```python
 # all variables in one scope
 def do_everything(names):
-  lookup = {}
-  size = len(names)
-  for name in names:
-    lowercase = name.lower()
-    lookup[name] = lowercase
-  for name in names:
-    print 'normal: ' + name
-    print 'lower: ' + lookup[name]
-  print 'total names: ' + str(size)
-  print str(lookup)
+    lookup = {}
+    size = len(names)
+    for name in names:
+        lowercase = name.lower()
+        lookup[name] = lowercase
+    for name in names:
+        print 'normal: ' + name
+        print 'lower: ' + lookup[name]
+    print 'total names: ' + str(size)
+    print str(lookup)
 ```
 
 The above example is contrived, but there are already confusing aspects. For example, `size` is available to the for loops in the function with no benefit. Just looking at the function, it's not clear where it's used. Additionally, the second for loop iterates over `names` unnecessarily. We could refactor this code like so:
 
 ```python
 def create_lowercase_map(names):
-  lookup = {}
-  for name in names:
-    lookup[name] = name.lower()
-  return lookup
+    lookup = {}
+    for name in names:
+        lookup[name] = name.lower()
+    return lookup
 
 def print_names(lookup):
-  for name, lowercase in lookup.iteritems():
-    print 'normal: ' + name
-    print 'lower: ' + lowercase
+    for name, lowercase in lookup.iteritems():
+        print 'normal: ' + name
+        print 'lower: ' + lowercase
 
 def do_everything(names):
-  lookup = create_lowercase_map(names)
-  print_names(lookup)
-  print 'total names: ' str(len(names))
-  print str(lookup)
+    lookup = create_lowercase_map(names)
+    print_names(lookup)
+    print 'total names: ' str(len(names))
+    print str(lookup)
 ```
 
 In this reworked example, two functions have been extracted. In the main function, there is only one argument and one variable in scope. The two new functions no longer have access to a variable representing the size of `names`, which has been eliminated altogether. `print_names` no longer has access to the `names` iterable because it's unnecessary for printing out name -> lowercase entries. Another benefit of smaller scopes is reduced pressure on naming variables. If there are few variables and a small scope, the purpose of the variables should be obvious, which means they won't require complicated names.
@@ -50,37 +50,37 @@ Python dictionaries and lists are mutable. If they couldn't be modified after in
 
 ```python
 def do_everything(db_one, db_two, db_three):
-  people_dict = {}
-  people_one = db_one.load_people()
-  for person in people_one:
-    people_dict[person['name_one']] = person
-  people_two = db_two.load_people()
-  for person in people_two:
-    people_dict[person['name_two']] = person
-  people_three = db_three.load_people()
-  for person in people_three:
-    people_dict[person['name_three']] = person
-  write_dict_to_file(people_dict)
-  # do more stuff
+    people_dict = {}
+    people_one = db_one.load_people()
+    for person in people_one:
+        people_dict[person['name_one']] = person
+    people_two = db_two.load_people()
+    for person in people_two:
+        people_dict[person['name_two']] = person
+    people_three = db_three.load_people()
+    for person in people_three:
+        people_dict[person['name_three']] = person
+    write_dict_to_file(people_dict)
+    # do more stuff
 ```
 
 In the above example, the people_dict is constructed in the same function in which it's used. This can be confusing because it's not obvious that the modification stops after the third people db is loaded. To simplify this, the `people_dict` will be constructed in its own function.
 
 ```python
 def load_people_from_db(db, name_key):
-  return index(lambda p: p[name_key], db.load_people())
+    return index(lambda p: p[name_key], db.load_people())
 
 def create_people_dict(db_one, db_two, db_three):
-  people_dict = {}
-  people_dict.update(load_people_from_db(db_one, 'name_one'))
-  people_dict.update(load_people_from_db(db_two, 'name_two'))
-  people_dict.update(load_people_from_db(db_three, 'name_three'))
-  return people_dict
+    people_dict = {}
+    people_dict.update(load_people_from_db(db_one, 'name_one'))
+    people_dict.update(load_people_from_db(db_two, 'name_two'))
+    people_dict.update(load_people_from_db(db_three, 'name_three'))
+    return people_dict
 
 def do_everything(db_one, db_two, db_three):
-  people_dict = create_people_dict(db_one, db_two, db_three)
-  write_dict_to_file(people_dict)
-  # do more stuff
+    people_dict = create_people_dict(db_one, db_two, db_three)
+    write_dict_to_file(people_dict)
+    # do more stuff
 ```
 
 In this example, modifications to `people_dict` occur only within `create_people_dict`. This is a one liner in the main `do_everything` function and we can assume that the `people_dict` is only read from then on. In this version, we also refactored the db reads to construct their own people dictionaries, which are then used to update the main people_dict during construction. So, both `load_people_from_db` and `create_people_dict` create dictionaries, they do not modify existing dictionaries.
@@ -91,40 +91,40 @@ There are often multiple lines of code that assign a value to the same variable 
 
 ```python
 def print_meridian(time):
-  meridian = None
-  if is_before_noon(time):
-    meridian = 'AM'
-  else:
-    meridian = 'PM'
-  print meridian
+    meridian = None
+    if is_before_noon(time):
+        meridian = 'AM'
+    else:
+        meridian = 'PM'
+    print meridian
 
 def print_time(clock):
-  time = None
-  try:
-    time = clock.get_time()
-  except ClockException as e:
-    print 'kablamo'
-    raise e
-  print 'time'
+    time = None
+    try:
+        time = clock.get_time()
+    except ClockException as e:
+        print 'kablamo'
+        raise e
+    print 'time'
 ```
 
 While these code snippets are not wrong, they do make the program more complicated, especially if they're surrounded by other code in the same function. These examples do two things that make programs harder to understand: they assign the same variable multiple times unnecessarily and they allow a variable to be referenced before the proper value has been assigned. Both of these issues can be fixed by writing functions that produce the values in question.
 
 ```python
 def get_meridian(time):
-  if is_before_noon(time):
-    return 'AM'
-  else:
-    return 'PM'
+    if is_before_noon(time):
+        return 'AM'
+    else:
+        return 'PM'
 
 meridian = get_meridian(time)
 
 def get_time(clock):
-  try:
-    return clock.get_time()
-  except ClockException as e:
-    print 'kablamo'
-    raise e
+    try:
+        return clock.get_time()
+    except ClockException as e:
+        print 'kablamo'
+        raise e
 
 time = get_time(clock)
 ```
@@ -151,13 +151,13 @@ Functions are easier to understand if the actions within them happen at the same
 
 ```python
 def build_desk():
-  empty_box()
-  build_chair()
-  assemble_legs()
-  put_legs_on_desk()
-  attach_keyboard_tray()
-  install_desk()
-  throw_away_box()
+    empty_box()
+    build_chair()
+    assemble_legs()
+    put_legs_on_desk()
+    attach_keyboard_tray()
+    install_desk()
+    throw_away_box()
 ```
 
 The above function would be more difficult to read if the details of leg assembly were written right into the middle of it.
@@ -166,17 +166,17 @@ While keeping functions at the same or a similar level of abstraction is an art,
 
 ```python
 def build_desk():
-  empty_box()
-  build_chair()
-  assemble_legs()
-  put_legs_on_desk()
-  tray = new Tray()
-  assert 10 == len(tray['screws'])
-  for screw in tray['screws']
-    attach_screw(screw)
-    print 'screw attached'
-  install_desk()
-  throw_away_box()
+    empty_box()
+    build_chair()
+    assemble_legs()
+    put_legs_on_desk()
+    tray = new Tray()
+    assert 10 == len(tray['screws'])
+    for screw in tray['screws']
+        attach_screw(screw)
+        print 'screw attached'
+    install_desk()
+    throw_away_box()
 ```
 
 This looks really odd. In the middle of these high level functions, we have a loop in which really specific tasks are performed. These should clearly be extracted into a `attach_keyboard_tray` function.

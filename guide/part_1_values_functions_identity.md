@@ -23,18 +23,18 @@ Functions take values as inputs and produce other values. In some cases, they pr
 ```python
 # produces a new number
 def sum_two_numbers(a, b):
-  return a + b
+    return a + b
 # use the function to produce a value of 17
 sum_two_numbers(7, 10)
 
 
 # produces a new string
 def lowercase(to_lowercase):
-  return to_lowercase.lower()
+    return to_lowercase.lower()
 
 # does not produce anything. writes out to the console
 def call_print(to_print):
-  print to_print
+    print to_print
 ```
 
 Identity
@@ -60,12 +60,12 @@ All three together
 ```python
 # define a summing function. a and b are 'parameters' to the function. They're like variables, but unlike other variables, they should never be reassigned
 def sum_two_numbers(a, b):
-  return a + b
+    return a + b
 
 # a function that writes to standard out and produces no new value
 # str() is a python builtin that converts values to strings
 def print_uppercase(to_print):
-  print str(to_print).upper()
+    print str(to_print).upper()
 
 # the main sequence of actions. Variables are assigned to values and functions are executed
 num_one = 6

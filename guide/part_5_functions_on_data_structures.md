@@ -11,36 +11,36 @@ Imagine there's a list of string names. The strings are all uppercased and have 
 
 ```python
 def fix_names(names):
-  fixed_names = []
-  for name in names:
-    lower = name.lower()
-    fixed = lower.replace('!', 'j')
-    fixed_names.append(fixed)
-  return fixed_names
+    fixed_names = []
+    for name in names:
+        lower = name.lower()
+        fixed = lower.replace('!', 'j')
+        fixed_names.append(fixed)
+    return fixed_names
 ```
 
 This programming pattern occurs very frequently. We're effectively mapping each value of the original iterable to a different value. Let's do a bit of refactoring:
 
 ```python
 def fix_name(name):
-  lower = name.lower()
-  fixed = lower.replace('!', 'j')
-  return fixed
+    lower = name.lower()
+    fixed = lower.replace('!', 'j')
+    return fixed
 
 def fix_names(names):
-  fixed_names = []
-  for name in names:
-    fixed_names.append(fix_name(name))
-  return fixed_names
+    fixed_names = []
+    for name in names:
+        fixed_names.append(fix_name(name))
+    return fixed_names
 ```
 
 At this point, all of the interesting behavior has been moved to the function `fix_name` and `fix_names` is purely boilerplate. This is the exact boilerplate that `map` implements. So the above code could be written with `map` as follows:
 
 ```python
 def fix_name(name):
-  lower = name.lower()
-  fixed = lower.replace('!', 'j')
-  return fixed
+    lower = name.lower()
+    fixed = lower.replace('!', 'j')
+    return fixed
 
 fixed = map(fix_name, names)
 ```
@@ -55,32 +55,32 @@ Imagine there's a list of dictionaries that represent cars. Each car dictionary 
 
 ```python
 def get_hondas(cars):
-  hondas = []
-  for car in cars:
-    if car['make'] == 'Honda':
-      hondas.append(car)
-  return hondas
+    hondas = []
+    for car in cars:
+        if car['make'] == 'Honda':
+            hondas.append(car)
+    return hondas
 ```
 
 Once again, this is a common programming pattern and the interesting bit can be refactored out:
 
 ```python
 def is_honda(car):
-  return car['make'] == 'Honda'
+    return car['make'] == 'Honda'
 
 def get_hondas(cars):
-  hondas = []
-  for car in cars:
-    if is_honda(car):
-      hondas.append(car)
-  return hondas
+    hondas = []
+    for car in cars:
+        if is_honda(car):
+            hondas.append(car)
+    return hondas
 ```
 
 At this point `get_hondas` is just boilerplate that matches the functionality of filter, so the above code can be rewritten:
 
 ```python
 def is_honda(car):
-  return car['make'] == 'Honda'
+    return car['make'] == 'Honda'
 
 hondas = filter(is_honda, cars)
 ```
@@ -125,7 +125,7 @@ Example: Sort list of numbers by the result of modding them with 3.
 
 ```python
 def cmp_mod_3(num_one, num_two):
-  return num_one % 3 - num_two % 3
+    return num_one % 3 - num_two % 3
 
 a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # [3, 6, 9, 1, 4, 7, 10, 2, 5, 8]
@@ -136,7 +136,7 @@ Key functions: In the above example and many other examples, you may want to sor
 
 ```python
 def to_lower(string):
-  return string.lower()
+    return string.lower()
 
 a = ['abc', 'Zbc', 'def']
 # ['Zbc', 'abc', 'def']
@@ -152,8 +152,8 @@ Sometimes it's beneficial to iterate over an iterable and keep track of the inde
 ```python
 names = ['jim', 'steve', 'bob', …]
 for i in xrange(len(names)):
-  print 'element #' + str(i)
-  print 'value: ' + names[i]
+    print 'element #' + str(i)
+    print 'value: ' + names[i]
 ```
 
 As I mentioned on the data structures page, directly reading from list indexes is unusual to see when programming because typically lists don't guarantee good performance for index lookups. Python lists do, but it may still look weird to other people. Additionally, this solution seems like a lot of work.
@@ -162,9 +162,9 @@ As I mentioned on the data structures page, directly reading from list indexes i
 names = ['jim', 'steve', 'bob', …]
 i = 0
 for name in names:
-  print 'element #' + str(i)
-  print 'value: ' + name
-  i = i + 1
+    print 'element #' + str(i)
+    print 'value: ' + name
+    i = i + 1
 ```
 
 To get around the antipattern, one could declare a variable outside the scope of the loop and increment its value each time through. This solution works, but it's fairly verbose and allows a variable used exclusively within the loop to escape the scope of that loop.
@@ -172,8 +172,8 @@ To get around the antipattern, one could declare a variable outside the scope of
 ```python
 names = ['jim', 'steve', 'bob', …]
 for i, name in enumerate(names):
-  print 'element #' + str(i)
-  print 'value: ' + name
+    print 'element #' + str(i)
+    print 'value: ' + name
 ```
 
 `enumerate` produces tuples of the indexes and values which can be nicely destructured as shown above. This solution is concise, simple, and as efficient for all sequences as the more verbose example above.
@@ -186,36 +186,36 @@ As an example, let's say we have an array of 100 entity dictionaries, which each
 
 ```python
 def entities_by_id(entities):
-  entities_by_id = {}
-  for entity in entities:
-    entities_by_id[entity['id']] = entity
-  return entities_by_id
+    entities_by_id = {}
+    for entity in entities:
+        entities_by_id[entity['id']] = entity
+    return entities_by_id
 ```
 
 We could refactor this like so:
 
 ```python
 def get_id(entity):
-  return entity['id']
+    return entity['id']
 
 def entities_by_id(entities):
-  entities_by_id = {}
-  for entity in entities:
-    entities_by_id[get_id(entity)] = entity
-  return entities_by_id
+    entities_by_id = {}
+    for entity in entities:
+        entities_by_id[get_id(entity)] = entity
+    return entities_by_id
 ```
 
 At this point, the only interesting behavior is in `get_id`. `entities_by_id` is just boilerplate that actually matches the functionality of index.
 
 ```python
 def index(function, iterable):
-  result = {}
-  for item in iterable:
-    result[function(item)] = item
-  return result
+    result = {}
+    for item in iterable:
+        result[function(item)] = item
+    return result
 
 def get_id(entity):
-  return entity['id']
+    return entity['id']
 
 entities_by_id = index(get_id, entities)
 ```

@@ -11,20 +11,20 @@ Conditional statements are structured as blocks of `if`/`elif`/`else` statements
 # return a lowercase version of the input string if it's less than 4 chars long
 # len() is a python builtin that returns the length of a string or collection
 def lowercase_if_short(input):
-  if len(input) < 4:
-    return input.lower()
-  else:
-    return input
+    if len(input) < 4:
+        return input.lower()
+    else:
+        return input
 
 # return a lowercase version of the input string if it's less than 4 chars long
 # return an uppercase version of the input string if it's more than 15 chars long
 def lowercase_if_short_uppercase_if_long(input):
-  if len(input) < 4:
-    return input.lower()
-  elif len(input) > 15:
-    return input.upper()
-  else:
-    return input
+    if len(input) < 4:
+        return input.lower()
+    elif len(input) > 15:
+        return input.upper()
+    else:
+        return input
 ```
 
 Loops
@@ -37,9 +37,9 @@ while example:
 start_number = 2000
 # boolean expression 
 while start_number > 5:
-  print str(start_number)
-  #change the control variable
-  start_number = start_number / 2
+    print str(start_number)
+    #change the control variable
+    start_number = start_number / 2
 ```
 
 Most loops act over a defined collection of items.
@@ -47,8 +47,8 @@ Most loops act over a defined collection of items.
 # print 'hello' five times. Effectively loops over the list [0, 1, 2, 3, 4]
 i = 0
 while i < 5:
-  print 'hello'
-  i = i + 1
+    print 'hello'
+    i = i + 1
 ```
 
 The above `while` loop, can be written more concisely as a `for` loop. `for` works on anything that can be iterated over. Lists are the simplest example of an iterable data structure.
@@ -57,14 +57,14 @@ The above `while` loop, can be written more concisely as a `for` loop. `for` wor
 # print 'hello' five times
 # xrange will produce an iterable with values [0, 1, 2, 3, 4]
 for i in xrange(5)
-  print 'hello'
+    print 'hello'
 ```
 
 As implied by the previous example, for loops iterate through collections of values and designate a variable to represent the current value for each block. To print the numbers 0 through 9, I could do this:
 
 ```python
 for n in xrange(10):
-  print str(n)
+    print str(n)
 ```
 
 Often the iterable is more interesting than a range of numbers. It may have the list of car manufacturers referenced earlier. To print those, simply do this:
@@ -72,5 +72,5 @@ Often the iterable is more interesting than a range of numbers. It may have the 
 ```python
 cars = ['Subaru', 'Nissan', 'Toyota', 'Honda']
 for car in cars:
-  print car
+    print car
 ```

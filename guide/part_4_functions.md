@@ -48,11 +48,11 @@ Higher order functions are functions that take at least one function as an argum
 
 ```python
 def multiply_two_numbers(a, b):
-  return a * b
+   return a * b
 
 # Higher order function that takes the function 'processor' as an argument
 def process_two_arguments(processor, a, b):
-  return processor(a, b)
+    return processor(a, b)
 
 # result = 10
 result = process_two_arguments(multiply_two_numbers, 5, 2)
@@ -64,21 +64,21 @@ For a more realistic example, let's say we need to perform a database backup. Th
 
 ```python
 def backup(db_conn, transformer, processor):
-  data = db_conn.read_data()
-  transformed_data = transformer(data)
-  processor(data)
+    data = db_conn.read_data()
+    transformed_data = transformer(data)
+    processor(data)
 
 def remove_ssn(data):
-  data_without_ssn = {}
-  data_without_ssn.update(data)
-  del data_without_ssn['ssn']
-  return data_without_ssn
+    data_without_ssn = {}
+    data_without_ssn.update(data)
+    del data_without_ssn['ssn']
+    return data_without_ssn
 
 def print_transformed_data(transformed_data):
-  print str(transformed_data)
+   print str(transformed_data)
 
 def write_transformed_data(transformed_data):
-  # do magic that writes data to file
+   # do magic that writes data to file
 
 # dry run for testing
 backup(db_conn, remove_ssn, print_transformed_data)
@@ -96,7 +96,7 @@ Python allows functions to be declared inline while calling higher order functio
 
 ```python
 def process_two_arguments(processor, a, b):
-  return processor(a, b)
+    return processor(a, b)
 
 # result = 10
 result = process_two_arguments(lambda x, y: x * y, 5, 2)

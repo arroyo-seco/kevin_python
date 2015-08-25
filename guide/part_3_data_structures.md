@@ -19,7 +19,7 @@ my_list.extend(other_list)
 
 # iteration
 for word in my_list:
-  print word
+    print word
 
 # size
 size = len(my_list)
@@ -57,8 +57,8 @@ exists = 'name' in my_dict
 
 # iteration (no order guarantees)
 for key, value in my_dict.iteritems()
-  print str(key)
-  print str(value)
+    print str(key)
+    print str(value)
 
 # size (number of key-value pairs)
 size = len(my_dict)
@@ -99,7 +99,7 @@ exists = 'jim' in my_set
 
 # iteration
 for name in my_set:
-  print name
+    print name
 
 # size
 size = len(my_set)
@@ -140,13 +140,13 @@ print last
 
 # iteritems() produces (key, value) tuples
 for key, value in my_dict.iteritems():
-  print key
-  print value
+    print key
+    print value
 
 # using a tuple to return multiple values from a function
 def load_items_from_db(conn):
-  result_map = conn.get_items()
-  return (result_map['items'], result_map['throughput_used'])
+    result_map = conn.get_items()
+    return (result_map['items'], result_map['throughput_used'])
 
 items, throughput = load_items_from_db(conn)
 ```
@@ -167,10 +167,10 @@ If this car object will show up repeatedly and it would be advantageous to make 
 ```python
 class Car:
   
-  def __init__(self, make, weight_pounds, color):
-    self.make = make
-    self.weight_pounds = weight_pounds
-    self.color = color
+    def __init__(self, make, weight_pounds, color):
+        self.make = make
+        self.weight_pounds = weight_pounds
+        self.color = color
 
 honda = Car('Honda', 2500, 'black')
 honda_two  = Car('Honda', 2500, 'black')
