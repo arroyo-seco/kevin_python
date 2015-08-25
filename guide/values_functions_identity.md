@@ -77,3 +77,9 @@ result = sum_two_numbers(num_one, num_two)
 # function produces no value so variable assignment isn't possible
 print_uppercase(result)
 ```
+
+Links
+-----
+[Next: Control Flow](control_flow.md)
+[Previous: Python Resources](python_resources.md)
+[README](README.md)

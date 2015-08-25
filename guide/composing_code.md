@@ -184,3 +184,8 @@ This looks really odd. In the middle of these high level functions, we have a lo
 The purpose of writing tests
 ----------------------------
 Writing tests is all about fear management. We're not afraid that the code doesn't work now, we're afraid that making a change to the code later will break it. It's this fear that will stagnate future development. All useful code will be edited. The more useful it is, the more you will want to change it to adapt to increased feature requests. Tests provide confidence that these changes won't break existing clients. In short, without tests is becomes prohibitively expensive to change useful code to be even more useful. That means business use cases aren't being met.
+
+Links
+-----
+[Previous: Functions on Data Structures](functions_on_data_structures.md)
+[README](README.md)

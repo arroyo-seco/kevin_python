@@ -199,3 +199,10 @@ Extra: Python lists, arrays, and the list abstraction
 An array is an in memory data structure that is an ordered list of values of definite size for which index lookups and writes occur in constant time. Python lists are an example of a list of variable size that is backed by a arrays for which index lookup is always fast. However, there are other ways to implement lists. For example, you could construct a list by making each value a node that has a reference to the next value. This sort of list is called a 'linked list'. Linked lists do not have the same performance guarantees for index lookups and writes. To get a value associated with an index, one must start at the beginning node of the list and follow the references from node to node until the desired index is reached. Array based lists and linked lists are both lists, and as such conform to the general abstraction of a list which defines a way to retrieve the value of an index, but the performance of this call varies dramatically. Another way of saying this is: The list abstraction makes no guarantees about the performance of index lookups or writes. 
 
 For this reason, in statically typed languages it's unusual to see an index lookup on a list without a clear indication that the type of the list being used is one which has the property of a constant time index lookup. Even then, it's rare to see index lookups compared to ordered iteration, which all list implementations should do efficiently. As a result, it's likely that there's a problem with your program if you find yourself depending on index lookups in lists.
+
+
+Links
+-----
+[Next: Functions](functions.md)
+[Previous: Control Flow](control_flow.md)
+[README](README.md)

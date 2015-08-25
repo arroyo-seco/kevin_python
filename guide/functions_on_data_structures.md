@@ -219,3 +219,9 @@ def get_id(entity):
 
 entities_by_id = index(get_id, entities)
 ```
+
+Links
+-----
+[Next: Composing Code](composing_code.md)
+[Previous: Functions](functions.md)
+[README](README.md)
