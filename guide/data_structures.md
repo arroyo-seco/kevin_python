@@ -29,6 +29,10 @@ first_value = my_list[0]
 
 # set index value
 my_list[0] = 'fun'
+
+# Lists containing value equals values in the same order are value equals
+# True
+[1, 2, 3] == [1, 2, 3]
 ```
 
 There are many more functions on python lists, but these are the core functions. The important takeaway is that a list is an ordered and iterable collection of values. If you care about order, you should be using a list. Furthermore, while values can be set and retrieved by index, this should be done relatively infrequently. In these situations, consider using a dictionary or tuple instead.
@@ -62,6 +66,10 @@ for key, value in my_dict.iteritems()
 
 # size (number of key-value pairs)
 size = len(my_dict)
+
+# Dictionaries containing value equals keys and values are value equals
+# True
+{ 'one': 'two', 'three': 'four'} == { 'three': 'four', 'one': 'two' }
 ```
 
 Dictionaries are fantastic when at storing values by unique keys for later retrieval. Because of this property, they can also represent real life objects. For example, let's say we wanted to represent a car object which has a few properties. One way to do so is to use a dictionary:
@@ -103,6 +111,10 @@ for name in my_set:
 
 # size
 size = len(my_set)
+
+# Sets that contain the value equals elements are equal
+# True
+set([1, 2, 4, 3]) == set([2, 1, 3, 4])
 ```
 
 There are also a number of set operations that can be done with sets such as union, difference, and intersection.
@@ -149,6 +161,10 @@ def load_items_from_db(conn):
     return (result_map['items'], result_map['throughput_used'])
 
 items, throughput = load_items_from_db(conn)
+
+# Tuple equality works just like list equality
+# True
+('A', 'B') == ('A', 'B')
 ```
 
 Classes

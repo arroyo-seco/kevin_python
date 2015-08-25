@@ -14,6 +14,7 @@ Examples:
 * List of strings: ['Subaru', 'Nissan', 'Toyota', 'Honda']
 * Boolean: True
 * Dictionary: { 'first': 'Jim', 'last': 'Simth' }
+* Set: set(['a', 'b', 'c'])
 * There are other types which can be looked up online
 
 Functions
@@ -76,6 +77,30 @@ num_two = 33
 result = sum_two_numbers(num_one, num_two)
 # function produces no value so variable assignment isn't possible
 print_uppercase(result)
+```
+
+Immutability and Mutability of Types
+------------------------------------
+Simple values like strings, tuples, numbers, and booleans are immutable at the language level. That means that an instance of a string has a particular value and that value can never be changed. Despite this there are modification functions on these immutable values, but they produce new values instead of modifying the existing value. Lists, Dictionaries, and Sets are mutable. That means that the underlying value can be changed.
+
+```python
+def change_list(l):
+	l.append('d')
+
+list_var = ['a','b','c']
+change_list(list_var)
+
+# ['a','b','c','d']
+print list_var
+
+def change_string(s):
+	s += 'bar'
+
+string_var = 'foo'
+change_string(string_var)
+
+#foo
+print string_var
 ```
 
 Links
