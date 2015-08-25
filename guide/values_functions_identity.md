@@ -80,6 +80,6 @@ print_uppercase(result)
 
 Links
 -----
-[Next: Control Flow](control_flow.md)
-[Previous: Python Resources](python_resources.md)
-[README](README.md)
+* Next: *[Control Flow](control_flow.md)*
+* Previous: *[Python Resources](python_resources.md)*
+* [README](README.md)
