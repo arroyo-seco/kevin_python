@@ -81,7 +81,7 @@ print_uppercase(result)
 
 Immutability and Mutability of Types
 ------------------------------------
-Simple values like strings, tuples, numbers, and booleans are immutable at the language level. That means that an instance of a string has a particular value and that value can never be changed. Despite this there are modification functions on these immutable values, but they produce new values instead of modifying the existing value. Lists, Dictionaries, and Sets are mutable. That means that the underlying value can be changed.
+Simple values like strings, tuples, numbers, and booleans are immutable at the language level. That means that an instance of a string has a particular value and that value can never be changed. Despite this, there are modification functions on these immutable values, but they produce new values instead of modifying the existing value. Lists, Dictionaries, and Sets are mutable. That means that the underlying value can be changed.
 
 ```python
 def change_list(l):

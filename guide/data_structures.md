@@ -112,7 +112,7 @@ for name in my_set:
 # size
 size = len(my_set)
 
-# Sets that contain the value equals elements are equal
+# Sets containing the same value equals elements are equal
 # True
 set([1, 2, 4, 3]) == set([2, 1, 3, 4])
 ```
