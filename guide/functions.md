@@ -90,9 +90,9 @@ backup(db_conn, remove_ssn, write_transformed_data)
 In the above example, `backup` is a higher order function that takes in two other functions. The first is a function that transforms data after it's loaded out of the database. The second function processes that transformed data. Because we wrote `backup` this way, it would be easy to substitute different transformation or processing functions. There are two processors above, one that prints the transformed values for debugging and one that writes the transformed value to a file. One can imagine other transformation functions including an identity function that doesn't transform the data at all.
 
 
-Lambdas
--------
-Python allows functions to be declared inline while calling higher order functions. In the `multiply_two_numbers` example, it would have been possible to skip that declaration and instead write a lambda function when calling `process_two_arguments`.
+Anonymous Functions
+-------------------
+Python allows functions to be declared inline while calling higher order functions. In the `multiply_two_numbers` example, it would have been possible to skip that declaration and instead write a 'lambda' function when calling `process_two_arguments`.
 
 ```python
 def process_two_arguments(processor, a, b):
