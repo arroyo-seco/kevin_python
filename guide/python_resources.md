@@ -22,4 +22,4 @@ Answers: http://www.stackoverflow.com
 Links
 -----
 * Next: [Values, Functions, and Identity](values_functions_identity.md)
-* [README](README.html)
+* [Table of Contents](toc.md)

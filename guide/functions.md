@@ -106,4 +106,4 @@ Links
 -----
 * Next: [Functions on Data Structures](functions_on_data_structures.md)
 * Previous: [Data Structures](data_structures.md)
-* [README](README.md)
+* [Table of Contents](toc.md)

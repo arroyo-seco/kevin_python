@@ -188,4 +188,4 @@ Writing tests is all about fear management. We're not afraid that the code doesn
 Links
 -----
 * Previous: [Functions on Data Structures](functions_on_data_structures.md)
-* [README](README.md)
+* [Table of Contents](toc.md)

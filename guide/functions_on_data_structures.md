@@ -224,4 +224,4 @@ Links
 -----
 * Next: [Composing Code](composing_code.md)
 * Previous: [Functions](functions.md)
-* [README](README.md)
+* [Table of Contents](toc.md)

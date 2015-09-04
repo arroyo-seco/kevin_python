@@ -79,4 +79,4 @@ Links
 -----
 * Next: [Data Structures](data_structures.md)
 * Previous: [Values, Functions, and Identity](values_functions_identity.md)
-* [README](README.md)
+* [Table of Contents](toc.md)
