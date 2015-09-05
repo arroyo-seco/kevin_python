@@ -1,7 +1,7 @@
 Control Flow
 ============
 
-There are two useful ways to change the control flow of a program. One is to introduce conditional blocks. The other is to introduce loops. Conditional blocks are gated by boolean conditions. They take the form of `if`/`elif`/`else` statements and the block that gets executed depends on the result of evaluating a boolean expression. Loops repeat a block (potentially with changing input variables) until a condition no longer holds. They are usually implemented using `for`, which is a special case of `while`.
+There are a few useful ways to change the control flow of a program. One is to introduce conditional blocks. Another is to introduce loops. Conditional blocks are gated by boolean conditions. They take the form of `if`/`elif`/`else` statements and the block that gets executed depends on the result of evaluating a boolean expression. Loops repeat a block (potentially with changing input variables) until a condition no longer holds. They are usually implemented using `for`, which is a special case of `while`. Lastly, in error prone operations or operations which require resources, `try` and `with` separate code into blocks that are guaranteed to run in certain conditions.
 
 Conditionals
 ------------
@@ -72,6 +72,35 @@ Often the iterable is more interesting than a range of numbers. It may have the 
 cars = ['Subaru', 'Nissan', 'Toyota', 'Honda']
 for car in cars:
     print car
+```
+
+Error and Resource Handling
+---------------------------
+There is a special construct to handle expected errors. It is called a 'try/except' block. All code that could cause the error goes in the `try` block, while the error handling code is put in an `except` block.
+
+```python
+try:
+    something_dangerous()
+except IOError as e:
+    print str(e)
+```
+
+There is an additional optional block called `finally`, which is guaranteed to be executed no matter what happens within the try block. It is usually used to close resources opened in a try.
+
+```python
+resource = None
+try:
+    resource = open_resource()
+    do_stuff(resource)
+finally:
+    close_resource(resource)
+```
+
+Python has a special syntax for doing the above open/close pattern with closeable resources. The `with` block allows the resource to be opened and kept within the same scope of its use. Additionally, the resource does not need to be explicitly closed.
+
+```python
+with open('workfile', 'r') as f:
+    print f.read()
 ```
 
 Links
