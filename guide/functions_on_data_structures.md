@@ -85,7 +85,7 @@ def is_honda(car):
 hondas = filter(is_honda, cars)
 ```
 
-sorted(iterable[, cmp[, key]])
+sorted(iterable[, cmp[, key[, reverse]]])
 ------------------------------
 `sorted` takes an iterable and returns a sorted list of its values. If an iterable is provided with no custom comparison functions, the sorting will be done according to the natural order of its items.
 
@@ -137,6 +137,12 @@ def to_lower(string):
 a = ['abc', 'Zbc', 'def']
 sorted(a) # ['Zbc', 'abc', 'def']
 sorted(a, key=to_lower) # ['abc', 'def', 'Zbc']
+```
+
+Reverse: This keyword argument is straightforward:
+
+```python
+sorted([2, 1, 3, 0, 5], reverse=True) # [5, 3, 2, 1, 0]
 ```
 
 enumerate(sequence)
