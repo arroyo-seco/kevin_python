@@ -31,11 +31,10 @@ Loops
 -----
 Loops repeatedly execute a block of code while a condition remains true. This is the standard `while` loop which takes a boolean expression. The block will be executed repeatedly so long as that expression remains true. Usually, code in the block itself affects variables used in the boolean expression in such a way that it will eventually become false.
 
-while example:
 ```python
 # declare control variable
 start_number = 2000
-# boolean expression 
+# boolean expression
 while start_number > 5:
     print str(start_number)
     #change the control variable

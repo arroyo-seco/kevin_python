@@ -13,27 +13,26 @@ Examples:
 * Floating point number: 0.5
 * List of strings: ['Subaru', 'Nissan', 'Toyota', 'Honda']
 * Boolean: True
-* Dictionary: { 'first': 'Jim', 'last': 'Simth' }
+* Dictionary: { 'first': 'Jim', 'last': 'Smith' }
 * Set: set(['a', 'b', 'c'])
 * There are other types which can be looked up online
 
 Functions
 ---------
-Functions take values as inputs and produce other values. In some cases, they produce no values within the program (for example, a function that prints to standard out does not produce a new data value). A simple 'lowercase' function may take a string name and produce a lowercased version of it. The input value would be 'Jim' and the output value would be 'jim'. 
+Functions take values as inputs and produce other values. In some cases, they do not return a value, in which case they return the `None` singleton, which is usually ignored. A simple 'lowercase' function may take a string value and produce a lowercased version of it. The input value would be 'Jim' and the output value would be 'jim'.
 
 ```python
 # produces a new number
 def sum_two_numbers(a, b):
     return a + b
-# use the function to produce a value of 17
-sum_two_numbers(7, 10)
+sum_two_numbers(7, 10) # 17
 
 
 # produces a new string
 def lowercase(to_lowercase):
     return to_lowercase.lower()
 
-# does not produce anything. writes out to the console
+# writes out to the console. Produces the value 'None'
 def call_print(to_print):
     print to_print
 ```
@@ -52,8 +51,7 @@ first_name = 'Steve'
 
 # assign a function to a variable
 function_to_use = sum
-result = function_to_use(7, 10)
-# result now set to value 17
+result = function_to_use(7, 10) # 17
 ```
 
 All three together
@@ -79,8 +77,29 @@ result = sum_two_numbers(num_one, num_two)
 print_uppercase(result)
 ```
 
-Immutability and Mutability of Types
+Value Equality vs. Instance Equality
 ------------------------------------
+All values have a concept of value equality. This is checked with the equality operator `==` and produces a Boolean value.
+
+```python
+3 == 3 # True
+3 == 2 # False
+```
+
+This is different from identity equality. For example, maybe you have two different instances of value equals tuples. These tuples have the same value. However, instantiating each one separately results in two different objects in memory. These two objects are value equals but they are not the same instance. In practice, it's rare to use instance equality checks unless the objects in question are singletons, like `None`.
+
+```python
+a = ('First', 'Last')
+b = ('First', 'Last')
+a == b # True
+a is b # False
+
+if a is not None:
+  print 'True!'
+```
+
+Immutability and Mutability of Types in Python
+----------------------------------------------
 Simple values like strings, tuples, numbers, and booleans are immutable at the language level. That means that an instance of a string has a particular value and that value can never be changed. Despite this, there are modification functions on these immutable values, but they produce new values instead of modifying the existing value. Lists, Dictionaries, and Sets are mutable. That means that the underlying value can be changed.
 
 ```python
@@ -89,18 +108,14 @@ def change_list(l):
 
 list_var = ['a','b','c']
 change_list(list_var)
-
-# ['a','b','c','d']
-print list_var
+print list_var # ['a','b','c','d']
 
 def change_string(s):
 	s += 'bar'
 
 string_var = 'foo'
 change_string(string_var)
-
-#foo
-print string_var
+print string_var # foo
 ```
 
 Links

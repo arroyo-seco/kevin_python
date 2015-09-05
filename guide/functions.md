@@ -15,7 +15,7 @@ Pure Functions
 --------------
 The simplest and clearest type of function is called a pure function. A pure function is a function where the return value is only determined by its input values, without observable side effects. This has several implications:
 
-* Inputs are never modified
+* Inputs values are never modified
 * The function produces a result
 * Calling the function repeatedly with the same arguments always produces the same result
 * The function does not internally reference any special or external state
@@ -23,11 +23,12 @@ The simplest and clearest type of function is called a pure function. A pure fun
 Examples:
 
 ```python
-# This function has no dependencies on internal state and no side effects. 
+# This function has no dependencies on internal state and no side effects.
 # It always maps the same two argument values to the same resulting value.
 def multiply_two_numbers(a, b):
   return a * b
 
+# Same with this one
 def construct_name_set():
   names = set()
   names.add('Jim')
@@ -35,7 +36,7 @@ def construct_name_set():
   names.add('Joe')
   return names
 
-# Counter example: this function changes the input list and doesn't return anything
+# Counter example: this function changes the input list
 def switch_places(l):
   temp = l[1]
   l[1] = l[0]
@@ -54,8 +55,7 @@ def multiply_two_numbers(a, b):
 def process_two_arguments(processor, a, b):
     return processor(a, b)
 
-# result = 10
-result = process_two_arguments(multiply_two_numbers, 5, 2)
+result = process_two_arguments(multiply_two_numbers, 5, 2) # 10
 ```
 
 In the above example, the function `process_two_arguments` took a processor function and applied it to the last two arguments. The function `muliply_two_numbers` was passed in as the processor and applied to those arguments. The result was the value 10.
@@ -89,7 +89,6 @@ backup(db_conn, remove_ssn, write_transformed_data)
 
 In the above example, `backup` is a higher order function that takes in two other functions. The first is a function that transforms data after it's loaded out of the database. The second function processes that transformed data. Because we wrote `backup` this way, it would be easy to substitute different transformation or processing functions. There are two processors above, one that prints the transformed values for debugging and one that writes the transformed value to a file. One can imagine other transformation functions including an identity function that doesn't transform the data at all.
 
-
 Anonymous Functions
 -------------------
 Python allows functions to be declared inline while calling higher order functions. In the `multiply_two_numbers` example, it would have been possible to skip that declaration and instead write a 'lambda' function when calling `process_two_arguments`.
@@ -98,8 +97,7 @@ Python allows functions to be declared inline while calling higher order functio
 def process_two_arguments(processor, a, b):
     return processor(a, b)
 
-# result = 10
-result = process_two_arguments(lambda x, y: x * y, 5, 2)
+result = process_two_arguments(lambda x, y: x * y, 5, 2) # 10
 ```
 
 Links

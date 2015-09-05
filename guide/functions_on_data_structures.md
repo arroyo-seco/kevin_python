@@ -1,11 +1,11 @@
 Functions on Data Structures
 ============================
 
-Most data in your program will be in the form of dictionaries and lists or in abstract iterables. There are several useful utility functions that make common operations on these structures straightforward. Using these will save work and reduce bugs.
+Most data in your program will be in the form of dictionaries, lists, or abstract iterables. There are several useful utility functions that make common operations on these structures straightforward. Using these will save work and reduce bugs.
 
 map(function, iterable)
 -----------------------
-`map` transforms all values in an iterable to new values and returns them in a list. The transformation is done by a function which is passed as an argument into map with the iterable itself. The transformation function is a single argument function that produces a new value.
+`map` transforms all values in an iterable to new values and returns them in a list. The transformation is done by a function which is passed as an argument into `map` with the iterable itself. The transformation function is a single argument function that produces a new value.
 
 Imagine there's a list of string names. The strings are all uppercased and have exclamation points instead of the letter 'j'. We want to lowercase them and substitute 'j' for the exclamation points. Here's how that code might look.
 
@@ -95,8 +95,7 @@ numbers: Lower numbers come before larger numbers
 
 ```python
 a = [5, 3, 4, 7, 1]
-# [1, 3, 4, 5, 7]
-b = sorted(a)
+b = sorted(a) # [1, 3, 4, 5, 7]
 ```
 
 tuples/lists: Elements of corresponding indexes are compared until one is less than its counterpart. The tuple/list with that lesser element is less than the tuple/list with the larger element.
@@ -105,16 +104,14 @@ tuples/lists: Elements of corresponding indexes are compared until one is less t
 a = [1. 2. 3.4]
 b = [1, 2, 5, 4]
 c = [a, b]
-# [[1, 2, 3, 4], [1, 2, 5, 4]]
-sorted(c)
+sorted(c) # [[1, 2, 3, 4], [1, 2, 5, 4]]
 ```
 
 strings: Each character has a number value. The numbers increase A-Z followed by a-z. The characters are then compared in order. In this way, you can think of string comparison as the comparison of two lists of numbers.
 
 ```python
 a = ['abc', 'def', 'aBC', 'DEF']
-# ['DEF', 'aBC', 'abc', 'def']
-b = sorted(a)
+b = sorted(a) # ['DEF', 'aBC', 'abc', 'def']
 ```
 
 dictionaries: While python does have a natural sort order for dictionaries, it's usually a mistake to depend on this non-obvious behavior.
@@ -128,8 +125,7 @@ def cmp_mod_3(num_one, num_two):
     return num_one % 3 - num_two % 3
 
 a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-# [3, 6, 9, 1, 4, 7, 10, 2, 5, 8]
-sorted(a, cmp=cmp_mod_3)
+sorted(a, cmp=cmp_mod_3) # [3, 6, 9, 1, 4, 7, 10, 2, 5, 8]
 ```
 
 Key functions: In the above example and many other examples, you may want to sort by treating each value as if it was a different value. In that case, we wanted to treat each value as if it was value % 3. sorted can take in a key function which transforms its single argument into a different value. A simple example is to sort strings in a case indifferent manner.
@@ -139,10 +135,8 @@ def to_lower(string):
     return string.lower()
 
 a = ['abc', 'Zbc', 'def']
-# ['Zbc', 'abc', 'def']
-sorted(a)
-# ['abc', 'def', 'Zbc']
-sorted(a, key=to_lower)
+sorted(a) # ['Zbc', 'abc', 'def']
+sorted(a, key=to_lower) # ['abc', 'def', 'Zbc']
 ```
 
 enumerate(sequence)
@@ -150,7 +144,7 @@ enumerate(sequence)
 Sometimes it's beneficial to iterate over an iterable and keep track of the index at the same time. This is the purpose of the function enumerate. It takes a sequence like a list, tuple, or string and produces an iterable of tuples of the index number and the value of that index. To demonstrate the value of this, I'll show two alternate implementations and show why using enumerate is easier:
 
 ```python
-names = ['jim', 'steve', 'bob', …]
+names = ['jim', 'steve', 'bob']
 for i in xrange(len(names)):
     print 'element #' + str(i)
     print 'value: ' + names[i]
@@ -159,7 +153,7 @@ for i in xrange(len(names)):
 As I mentioned on the data structures page, directly reading from list indexes is unusual to see when programming because typically lists don't guarantee good performance for index lookups. Python lists do, but it may still look weird to other people. Additionally, this solution seems like a lot of work.
 
 ```python
-names = ['jim', 'steve', 'bob', …]
+names = ['jim', 'steve', 'bob']
 i = 0
 for name in names:
     print 'element #' + str(i)
@@ -170,7 +164,7 @@ for name in names:
 To get around the antipattern, one could declare a variable outside the scope of the loop and increment its value each time through. This solution works, but it's fairly verbose and allows a variable used exclusively within the loop to escape the scope of that loop.
 
 ```python
-names = ['jim', 'steve', 'bob', …]
+names = ['jim', 'steve', 'bob']
 for i, name in enumerate(names):
     print 'element #' + str(i)
     print 'value: ' + name
@@ -219,6 +213,23 @@ def get_id(entity):
 
 entities_by_id = index(get_id, entities)
 ```
+
+Extra: Python list comprehensions
+---------------------------------
+
+Python provides special syntax for doing a `map` or `filter`. This alternative is borrowed from mathematics and is called a list comprehension. It is actually idiomatic python to use list comprehensions instead of explicitly using `map` and `filter`.
+
+```python
+zero_to_four = range(5)
+
+map(lambda x: x * 2, zero_to_four) # [0, 2, 4, 6, 8]
+[x * 2 for x in zero_to_four] # [0, 2, 4, 6, 8]
+
+filter(lambda x: x % 2 == 0) # [0, 2, 4]
+[x for x in zero_to_four if x % 2 == 0] # [0, 2, 4]
+```
+
+These can get more complicated, but limiting their use to the basic map and filter cases is recommended.
 
 Links
 -----

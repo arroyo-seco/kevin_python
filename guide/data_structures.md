@@ -8,10 +8,10 @@ Lists
 Python lists are ordered collections of values. New values can be appended to the back of them. Additionally, individual indexes can be read or set to a value. Here are the core functions on lists:
 
 ```python
-# construction: 
+# construction:
 my_list = []
 
-# addition: 
+# addition:
 my_list.append('word')
 
 # multiple additions
@@ -31,8 +31,7 @@ first_value = my_list[0]
 my_list[0] = 'fun'
 
 # Lists containing value equals values in the same order are value equals
-# True
-[1, 2, 3] == [1, 2, 3]
+[1, 2, 3] == [1, 2, 3] # True
 ```
 
 There are many more functions on python lists, but these are the core functions. The important takeaway is that a list is an ordered and iterable collection of values. If you care about order, you should be using a list. Furthermore, while values can be set and retrieved by index, this should be done relatively infrequently. In these situations, consider using a dictionary or tuple instead.
@@ -68,8 +67,7 @@ for key, value in my_dict.iteritems()
 size = len(my_dict)
 
 # Dictionaries containing value equals keys and values are value equals
-# True
-{ 'one': 'two', 'three': 'four'} == { 'three': 'four', 'one': 'two' }
+{ 'one': 'two', 'three': 'four'} == { 'three': 'four', 'one': 'two' } # True
 ```
 
 Dictionaries are fantastic when at storing values by unique keys for later retrieval. Because of this property, they can also represent real life objects. For example, let's say we wanted to represent a car object which has a few properties. One way to do so is to use a dictionary:
@@ -113,8 +111,7 @@ for name in my_set:
 size = len(my_set)
 
 # Sets containing the same value equals elements are equal
-# True
-set([1, 2, 4, 3]) == set([2, 1, 3, 4])
+set([1, 2, 4, 3]) == set([2, 1, 3, 4]) # True
 ```
 
 There are also a number of set operations that can be done with sets such as union, difference, and intersection.
@@ -129,7 +126,7 @@ print str(len(first_name_list))
 
 unique_names = set(first_name_list)
 # 5,000 unique names in list
-print str(len(unique_names)) 
+print str(len(unique_names))
 
 # is the name jim in there?
 contains_jim = 'jim' in unique_names
@@ -163,8 +160,7 @@ def load_items_from_db(conn):
 items, throughput = load_items_from_db(conn)
 
 # Tuple equality works just like list equality
-# True
-('A', 'B') == ('A', 'B')
+('A', 'B') == ('A', 'B') # True
 ```
 
 Classes
@@ -182,7 +178,7 @@ If this car object will show up repeatedly and it would be advantageous to make 
 
 ```python
 class Car:
-  
+
     def __init__(self, make, weight_pounds, color):
         self.make = make
         self.weight_pounds = weight_pounds
@@ -192,13 +188,11 @@ honda = Car('Honda', 2500, 'black')
 honda_two  = Car('Honda', 2500, 'black')
 honda_three = Car('Honda', 3300, 'red')
 
-# True
-honda == honda_two
-# False
-honda == honda_three
+honda == honda_two # True
+honda == honda_three # True
 ```
 
-Classes can do many more things, but those features often add complexity and headaches to programming. From a data structures perspective, the class is just syntactic sugar around a dictionary. 
+Classes can do many more things, but those features often add complexity and headaches to programming. From a data structures perspective, the class is just syntactic sugar around a dictionary.
 
 Extra: Iterables and Iteration
 ==============================
@@ -212,10 +206,9 @@ Many important functions that act on data structures produce iterables instead o
 Extra: Python lists, arrays, and the list abstraction
 =====================================================
 
-An array is an in memory data structure that is an ordered list of values of definite size for which index lookups and writes occur in constant time. Python lists are an example of a list of variable size that is backed by a arrays for which index lookup is always fast. However, there are other ways to implement lists. For example, you could construct a list by making each value a node that has a reference to the next value. This sort of list is called a 'linked list'. Linked lists do not have the same performance guarantees for index lookups and writes. To get a value associated with an index, one must start at the beginning node of the list and follow the references from node to node until the desired index is reached. Array based lists and linked lists are both lists, and as such conform to the general abstraction of a list which defines a way to retrieve the value of an index, but the performance of this call varies dramatically. Another way of saying this is: The list abstraction makes no guarantees about the performance of index lookups or writes. 
+An abstraction is a conceptual contract that abstracts away specifics of an implementation. It is common to 'program to the abstraction' or contract as opposed to the implementation even if we know the implementation. The list abstraction describes an ordered collection of elements of a definite size. The elements can be iterated through in order. The first element is the value of index '0' of the collection and the last element is the value of index 'size - 1'. Elements can be retrieved by their indexes. Python lists are an example of a list that is backed by arrays, a data structure for which index lookup is always fast. However, there are other ways to implement lists. For example, one could construct a list by making each element a node that has a reference to the next element. This sort of list is called a 'linked list'. Linked lists do not have the same performance guarantees for index lookups. To lookup a value associated with an index, one must start at the beginning element of the list and follow the references from element to element until the desired index is reached. Array based lists and linked lists are both lists, and as such conform to the general abstraction of a list which defines a way to retrieve the value of an index, but the performance of this call varies dramatically. Another way of saying this is: The list abstraction makes no guarantees about the performance of index lookups.
 
-For this reason, in statically typed languages it's unusual to see an index lookup on a list without a clear indication that the type of the list being used is one which has the property of a constant time index lookup. Even then, it's rare to see index lookups compared to ordered iteration, which all list implementations should do efficiently. As a result, it's likely that there's a problem with your program if you find yourself depending on index lookups in lists.
-
+For this reason, in statically typed languages it's unusual to see an index lookup on a list without a clear indication that the type of the list being used is one which has the property of fast index lookup. Even then, it's rare to see index lookups compared to ordered iteration, which all list implementations should do efficiently. As a result, it's likely that there's a problem with your program if you find yourself depending on index lookups in lists.
 
 Links
 -----

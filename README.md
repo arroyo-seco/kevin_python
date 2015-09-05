@@ -1,7 +1,7 @@
 Programming
 ===========
 
-This is short guide of best practices and recipes for writing simple code. It gives examples in the python programming language for simplicity. It is targeted at people who are already familiar with computers or basic programming, but don't have a solid conceptual model for how to solve problems with code.
+This is short guide of best practices for writing simple code. These practices are demonstrated with the python programming language. The guide is targeted at people who are already familiar with computers or basic programming, but don't have a solid conceptual model for how to solve problems with code.
 
 Guide
 -----
