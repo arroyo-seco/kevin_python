@@ -227,6 +227,14 @@ map(lambda x: x * 2, zero_to_four) # [0, 2, 4, 6, 8]
 
 filter(lambda x: x % 2 == 0) # [0, 2, 4]
 [x for x in zero_to_four if x % 2 == 0] # [0, 2, 4]
+
+# combination filter + map
+result = []
+for x in zero_to_four:
+    if x % 2 == 0:
+        result.append(x * 2)
+result # [0, 4, 8]
+[x * 2 for x in zero_to_four if x % 2 == 0] # [0, 4, 8]
 ```
 
 These can get more complicated, but limiting their use to the basic map and filter cases is recommended.
